@@ -11,22 +11,12 @@ class Audio {
     }
 
     handlePlay(e) {
-        if (this.audioCtx.state === 'suspended') { //autoplay policy
-            this.audioCtx.resume();
-        }
-        if (this.isPlaying) {
-            console.log("pause")
-            this.audioElement.pause();
-        } else {
-            console.log("play")
-
-            this.audioElement.play();
-        }
+        if (this.audioCtx.state === 'suspended') { this.audioCtx.resume(); } // autoplay policy
+        this.isPlaying ? this.audioElement.pause() : this.audioElement.play();
         this.isPlaying = !this.isPlaying;
     }
 
     handleTrackEnd(e) {
         this.playButton.dataset.playing = 'false';
-        this.playButton.setAttribute( "aria-checked", "false" );
     }
 }

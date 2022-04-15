@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css" />
         <title>Time signature tool</title>
     </head>
     <body>
@@ -16,7 +17,10 @@
                     <span>Play/Pause</span>
                 </button>
                 <audio src="assets/CanYouHelpMeLoop.wav" crossorigin="anonymous" ></audio>
-                <media-scrubber></media-scrubber>
+                <!-- <media-scrubber></media-scrubber> -->
+                <div class="progress-container" id="progress-container">
+                    <div class="progress" id="progress"></div>
+                </div>
             </div>
             <div class="beats">Beats</div>
         </div>
