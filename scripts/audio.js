@@ -1,30 +1,32 @@
-const AudioContext = window.AudioContext || window.webkitAudioContext;
-const audioCtx = new AudioContext();
+class Audio {
+    constructor({ context, audioElement, track }) {
+        this.audioCtx = context;
+        this.audioElement = audioElement;
+        this.track = track;
+        this.isPlaying = false;
+        this.playButton = document.querySelector('.play-pause');
+        this.playButton.addEventListener("click", () => this.handlePlay());
+        this.audioElement.addEventListener("ended", () => this.handleTrackEnd());
+        this.track.connect(this.audioCtx.destination);
+    }
 
-// Load a sound
-const audioElement = document.querySelector('audio');
-const track = audioCtx.createMediaElementSource(audioElement);
+    handlePlay(e) {
+        if (this.audioCtx.state === 'suspended') { //autoplay policy
+            this.audioCtx.resume();
+        }
+        if (this.isPlaying) {
+            console.log("pause")
+            this.audioElement.pause();
+        } else {
+            console.log("play")
 
-const playButton = document.querySelector('.tape-controls-play');
+            this.audioElement.play();
+        }
+        this.isPlaying = !this.isPlaying;
+    }
 
-playButton.addEventListener('click', function() {
-	if (this.dataset.playing === 'false') {
-		audioElement.play();
-		this.dataset.playing = 'true';
-	} else if (this.dataset.playing === 'true') {
-		audioElement.pause();
-		this.dataset.playing = 'false';
-	}
-
-	let state = this.getAttribute('aria-checked') === "true" ? true : false;
-	this.setAttribute( 'aria-checked', state ? "false" : "true" );
-}, false);
-
-// If the track ends
-audioElement.addEventListener('ended', () => {
-	playButton.dataset.playing = 'false';
-	playButton.setAttribute( "aria-checked", "false" );
-}, false);
-
-// Connect the graph
-track.connect(audioCtx.destination);
+    handleTrackEnd(e) {
+        this.playButton.dataset.playing = 'false';
+        this.playButton.setAttribute( "aria-checked", "false" );
+    }
+}

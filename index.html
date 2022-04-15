@@ -12,13 +12,16 @@
         <div class="content-container">
             <div class="audio-file">
                 <h2>Audio File</h2>
-                <button data-playing="false" class="tape-controls-play" role="switch" aria-checked="false">
+                <button class="play-pause">
                     <span>Play/Pause</span>
                 </button>
                 <audio src="assets/CanYouHelpMeLoop.wav" crossorigin="anonymous" ></audio>
+                <media-scrubber></media-scrubber>
             </div>
             <div class="beats">Beats</div>
         </div>
+        <script src="index.js"></script>
         <script src="scripts/audio.js"></script>
+        <script src="scripts/scrubber.js"></script>
     </body>
 </html>
