@@ -9,8 +9,27 @@ document.addEventListener("DOMContentLoaded", function(){
         track: this.track,
         location: "assets/CanYouHelpMeLoop.wav"
     });
+
     let scrubber = new Scrubber({
         context: this.audioCtx,
         audioElement: this.audioElement
+    });
+
+    $(".close-btn").click(() => $(".modal-right").hide());
+    $(".close-btn").click(() => $(".modal-wrong").hide());
+
+
+    const userCorrect = (userAnswer) => {
+        userAnswer.target.style.background = "green";
+        $(".modal-right").show()
+    }
+    const userWrong = (userAnswer) => {
+        userAnswer.target.style.background = "red";
+        $(".modal-wrong").show()
+    }
+    let beatsContainer = new BeatsContainer({
+        correctBeatNums: [5, 9, 13],
+        userCorrect: userCorrect,
+        userWrong: userWrong,
     })
 })

@@ -16,15 +16,36 @@
                 <button class="play-pause">
                     <span>Play/Pause</span>
                 </button>
-                <audio src="assets/CanYouHelpMeLoop.wav" crossorigin="anonymous" ></audio>
+                <audio src="assets/CanYouHelpMeLoopEdited.wav" crossorigin="anonymous" ></audio>
                 <div class="progress-container" id="progress-container">
                     <div class="progress" id="progress"></div>
                 </div>
             </div>
-            <div class="beats">Beats</div>
+            <div class="beats-container" id="beats-container">
+                <ul class="beats" id="beats"></ul>
+            </div>
         </div>
+
+        <div class="modal-right">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <p>You got it right!</p>
+            </div>
+        </div>
+
+        <div class="modal-wrong">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <p>Try again</p>
+            </div>
+        </div>
+
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <script src="index.js"></script>
         <script src="scripts/audio.js"></script>
         <script src="scripts/scrubber.js"></script>
+        <script src="scripts/beats-container.js"></script>
+        <script src="scripts/beat.js"></script>
     </body>
 </html>

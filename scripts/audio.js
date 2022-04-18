@@ -16,6 +16,10 @@ class Audio {
         this.isPlaying = !this.isPlaying;
     }
 
+    // replayTrack(e) {
+    //     this.audioElement.currentTime = 0;
+    // }
+
     handleTrackEnd(e) {
         this.playButton.dataset.playing = 'false';
     }
