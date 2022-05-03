@@ -9,6 +9,7 @@ class Beat {
 
     setProgress(e) {
         this.audioElement.currentTime = (e.offsetX / (e.currentTarget.clientWidth)) * this.audioElement.duration;
+        this.audioElement.play()
     }
 
     updateProgress(e) {

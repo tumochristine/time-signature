@@ -6,7 +6,7 @@ class Audio {
         this.isPlaying = false;
         this.playButton = document.querySelector('.play-pause');
         this.playButton.addEventListener("click", () => this.handlePlay());
-        this.audioElement.addEventListener("ended", () => this.handleTrackEnd());
+        this.audioElement.addEventListener("ended", () => this.replayTrack());
         this.track.connect(this.audioCtx.destination);
     }
 
@@ -16,9 +16,11 @@ class Audio {
         this.isPlaying = !this.isPlaying;
     }
 
-    // replayTrack(e) {
-    //     this.audioElement.currentTime = 0;
-    // }
+    replayTrack(e) {
+        this.audioElement.currentTime = 0;
+        this.audioElement.play()
+        // this.audioElement.currentTime = this.audioElement.duration/2;
+    }
 
     handleTrackEnd(e) {
         this.playButton.dataset.playing = 'false';
